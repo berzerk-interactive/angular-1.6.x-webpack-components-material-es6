@@ -1,11 +1,11 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // click on the name of the option to get to the detailed documentation
   // click on the items with arrows to show more examples / advanced options
 
   entry: {
-    app: "./src/app",
     vendor: [
       "angular",
       "angular-aria",
@@ -13,7 +13,9 @@ module.exports = {
       "angular-resource",
       "angular-ui-router",
       // "angular-material"
-    ]
+    ],
+    app: "./src/app"
+
   }, // string | object | array
   // Here the application starts executing
   // and webpack starts bundling
@@ -28,13 +30,13 @@ module.exports = {
     filename: "[name].bundle.js", // string
     // the filename template for entry chunks
 
-    publicPath: "/assets/", // string
+    // publicPath: "/assets/", // string
     // the url to the output directory resolved relative to the HTML page
 
-    library: "MyLibrary", // string,
+    // library: "MyLibrary", // string,
     // the name of the exported library
 
-    libraryTarget: "umd", // universal module definition
+    // libraryTarget: "umd", // universal module definition
     // the type of the exported library
 
     /* Advanced output configuration (click to show) */
@@ -47,53 +49,25 @@ module.exports = {
       // rules for modules (configure loaders, parser options, etc.)
 
       {
-        test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, "app")
-        ],
+        test: /\.js?$/,
         exclude: [
-          path.resolve(__dirname, "app/demo-files")
+          path.resolve(__dirname, "node_modules")
         ],
-        // these are matching conditions, each accepting a regular expression or string
-        // test and include have the same behavior, both must be matched
-        // exclude must not be matched (takes preferrence over test and include)
-        // Best practices:
-        // - Use RegExp only in test and for filename matching
-        // - Use arrays of absolute paths in include and exclude
-        // - Try to avoid exclude and prefer include
-
-        // issuer: { test, include, exclude },
-        // conditions for the issuer (the origin of the import)
-
-        enforce: "pre",
-        enforce: "post",
-        // flags to apply these rules, even if they are overridden (advanced option)
-
         loader: "babel-loader",
         // the loader which should be applied, it'll be resolved relative to the context
         // -loader suffix is no longer optional in webpack2 for clarity reasons
         // see webpack 1 upgrade guide
-
-        options: {
-          presets: ["es2015"]
-        },
+        // babelrc: true,
+        // options: {
+        //   presets: ["env"]
+        // },
         // options for the loader
       },
-
       {
-        test: "\.html$",
-
-        use: [
-          // apply multiple loaders and options
-          "htmllint-loader",
-          {
-            loader: "html-loader",
-            options: {
-              /* ... */
-            }
-          }
-        ]
-      },
+        test: /\.html$/,
+        loader: 'raw-loader',
+        exclude: /node_modules/
+      }
 
       // { oneOf: [ /* rules */ ] },
       // // only use one of these nested rules
@@ -119,28 +93,28 @@ module.exports = {
     // options for resolving module requests
     // (does not apply to resolving to loaders)
 
-    modules: [
-      "node_modules",
-      path.resolve(__dirname, "app")
-    ],
-    // directories where to look for modules
-
-    extensions: [".js", ".json", ".jsx", ".css"],
-    // extensions that are used
-
-    alias: {
-      // a list of module name aliases
-
-      "module": "new-module",
-      // alias "module" -> "new-module" and "module/path/file" -> "new-module/path/file"
-
-      "only-module$": "new-module",
-      // alias "only-module" -> "new-module", but not "module/path/file" -> "new-module/path/file"
-
-      "module": path.resolve(__dirname, "app/third/module.js"),
-      // alias "module" -> "./app/third/module.js" and "module/file" results in error
-      // modules aliases are imported relative to the current context
-    },
+    // modules: [
+    //   "node_modules",
+    //   path.resolve(__dirname, "app")
+    // ],
+    // // directories where to look for modules
+    //
+    // extensions: [".js", ".json", ".jsx", ".css"],
+    // // extensions that are used
+    //
+    // alias: {
+    //   // a list of module name aliases
+    //
+    //   "module": "new-module",
+    //   // alias "module" -> "new-module" and "module/path/file" -> "new-module/path/file"
+    //
+    //   "only-module$": "new-module",
+    //   // alias "only-module" -> "new-module", but not "module/path/file" -> "new-module/path/file"
+    //
+    //   "module": path.resolve(__dirname, "app/third/module.js"),
+    //   // alias "module" -> "./app/third/module.js" and "module/file" results in error
+    //   // modules aliases are imported relative to the current context
+    // },
     /* alternative alias syntax (click to show) */
 
     /* Advanced resolve configuration (click to show) */
@@ -169,7 +143,7 @@ module.exports = {
   // the environment in which the bundle should run
   // changes chunk loading behavior and available modules
 
-  externals: ["react", /^@angular\//],
+  // externals: ["react", /^@angular\//],
   // Don't follow/bundle these modules, but request them at runtime from the environment
 
   stats: "errors-only",
@@ -179,17 +153,21 @@ module.exports = {
     proxy: { // proxy URLs to backend development server
       '/api': 'http://localhost:3000'
     },
-    contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
+    contentBase: path.join(__dirname, 'src'), // boolean | string | array, static file location
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-    hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+    hot: false, // hot module replacement. Depends on HotModuleReplacementPlugin
     https: false, // true for self-signed, object for cert authority
     noInfo: true, // only errors & warns on hot reload
     // ...
   },
 
   plugins: [
-    // ...
+    new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/index.html'),
+            hash: true,
+            title: 'title'
+        }),
   ],
   // list of additional plugins
 

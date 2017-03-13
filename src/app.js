@@ -11,6 +11,11 @@ angular.module('app', [
       url: '/hello',
       component: 'hello'
     }
+  var appState = {
+    name:'app',
+    url: "/",
+    redirectTo: 'hello'
+  }
   var oneState = {
       name: 'one',
       url: '/one',
@@ -22,6 +27,7 @@ angular.module('app', [
       component: 'two'
     }
     $stateProvider.state(helloState);
+    $stateProvider.state(appState);
     $stateProvider.state(oneState);
     $stateProvider.state(twoState);
     $locationProvider.html5Mode(true);

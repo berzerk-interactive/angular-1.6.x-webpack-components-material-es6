@@ -20,6 +20,9 @@
     "webpack",
     "es6"
   ],
+  "engines": {
+    "node": "7.7.2"
+  },
   "author": "Lee Blazek <info@berzerk.co.nz> (http://berzerk.co.nz/)",
   "license": "ISC",
   "bugs": {

@@ -1,6 +1,6 @@
 var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CommonsChunkPlugin = require("./node_modules/webpack/lib/optimize/CommonsChunkPlugin");
 
 
 module.exports = {
@@ -167,10 +167,16 @@ module.exports = {
 
   plugins: [
     // new OccurenceOrderPlugin(true),
-    new CommonsChunkPlugin({
+    new webpack.optimize.CommonsChunkPlugin({
      names: ['vendor'],
      minChunks: 2
    }),
+   new webpack.optimize.UglifyJsPlugin({
+    mangle: false,
+    compress: {
+        warnings: false
+    }
+  }),
     new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src/index.html'),
         hash: true,

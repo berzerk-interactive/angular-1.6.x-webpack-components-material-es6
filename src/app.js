@@ -25,6 +25,8 @@ angular.module('app', [
     $stateProvider.state(oneState);
     $stateProvider.state(twoState);
     $locationProvider.html5Mode(true);
+    $stateProvider
+    .state("otherwise", { url : '/hello'})
 })
 .component('hello', {
   template: require('./hello/hello.html'),

@@ -6,5 +6,5 @@ class helloCtrl {
     
   }
 }
-
+helloCtrl.$inject= ['$sce'];
 export default helloCtrl;

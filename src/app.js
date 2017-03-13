@@ -5,7 +5,7 @@ angular.module('app', [
   'ui.router',
   'ngMaterial'
 ])
-.config(function ($stateProvider) {
+.config(function ($stateProvider, $locationProvider) {
   var helloState = {
       name: 'hello',
       url: '/hello',
@@ -24,6 +24,7 @@ angular.module('app', [
     $stateProvider.state(helloState);
     $stateProvider.state(oneState);
     $stateProvider.state(twoState);
+    $locationProvider.html5Mode(true);
 })
 .component('hello', {
   template: require('./hello/hello.html'),

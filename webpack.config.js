@@ -1,32 +1,24 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CommonsChunkPlugin = require("./node_modules/webpack/lib/optimize/CommonsChunkPlugin");
+
 
 module.exports = {
-  // click on the name of the option to get to the detailed documentation
-  // click on the items with arrows to show more examples / advanced options
-
   entry: {
+    app: "./src/app",
     vendor: [
       "angular",
       "angular-aria",
       "angular-animate",
       "angular-resource",
       "angular-ui-router",
-      // "angular-material"
+      "angular-material"
     ],
-    app: "./src/app"
-
-  }, // string | object | array
-  // Here the application starts executing
-  // and webpack starts bundling
-
+  },
   output: {
-    // options related to how webpack emits results
-
     path: path.resolve(__dirname, "dist"), // string
     // the target directory for all output files
     // must be an absolute path (use the Node.js path module)
-
     filename: "[name].bundle.js", // string
     // the filename template for entry chunks
 
@@ -53,22 +45,35 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "node_modules")
         ],
-        loader: "babel-loader",
-        // the loader which should be applied, it'll be resolved relative to the context
-        // -loader suffix is no longer optional in webpack2 for clarity reasons
-        // see webpack 1 upgrade guide
+        use: "babel-loader",
         // babelrc: true,
         // options: {
         //   presets: ["env"]
         // },
-        // options for the loader
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader',
+        use: 'raw-loader',
         exclude: /node_modules/
-      }
-
+      },
+      //load all css into a js bundle which you can require
+      {
+          test: /\.css$/,
+          use: 'style-loader!css-loader',
+          exclude: /node_modules/
+      },
+      //run all sass thru loader, then css loader, then into js bundle
+      {
+          test: /\.scss$/,
+          use: 'style-loader!css-loader!sass-loader',
+          exclude: /node_modules/
+      },
+      //load images thru loader and either produce data url or url https://github.com/webpack/url-loader
+      {
+          test: /\.(png|jpg)$/,
+          use: 'url?limit=25000',
+          exclude: /node_modules/
+      },
       // { oneOf: [ /* rules */ ] },
       // // only use one of these nested rules
       //
@@ -85,8 +90,6 @@ module.exports = {
       // { resource: { not: /* condition */ } }
       // matches if the condition is not matched
     ],
-
-    /* Advanced module configuration (click to show) */
   },
 
   resolve: {
@@ -163,14 +166,15 @@ module.exports = {
   },
 
   plugins: [
+    // new OccurenceOrderPlugin(true),
+    new CommonsChunkPlugin({
+     names: ['vendor'],
+     minChunks: 2
+   }),
     new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src/index.html'),
-            hash: true,
-            title: 'title'
-        }),
+        template: path.resolve(__dirname, 'src/index.html'),
+        hash: true,
+        title: 'title'
+    }),
   ],
-  // list of additional plugins
-
-
-  /* Advanced configuration (click to show) */
 }

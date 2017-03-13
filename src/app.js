@@ -1,9 +1,9 @@
 import helloCtrl from "./hello/hello.ctrl"
-
+import "style-loader!css-loader!sass-loader!../node_modules/angular-material/angular-material.scss";
 
 angular.module('app', [
   'ui.router',
- // 'ngMaterial'
+  'ngMaterial'
 ])
 .config(function ($stateProvider) {
   var helloState = {

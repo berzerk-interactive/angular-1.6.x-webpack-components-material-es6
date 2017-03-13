@@ -45,11 +45,15 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "node_modules")
         ],
-        use: "babel-loader",
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: [
+            		["es2015", { "modules": false }]
+            	]}
+        }]
         // babelrc: true,
-        // options: {
-        //   presets: ["env"]
-        // },
+
       },
       {
         test: /\.html$/,
@@ -172,7 +176,7 @@ module.exports = {
      minChunks: 2
    }),
    new webpack.optimize.UglifyJsPlugin({
-    mangle: false,
+    // mangle: false,
     compress: {
         warnings: false
     }

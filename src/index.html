@@ -5,18 +5,16 @@
     <title>app</title>
   </head>
   <body >
-    <h1>dude {{ 1+1}}</h1>
-    <md-content class="md-padding">
       <md-nav-bar
         md-selected-nav-item="currentNavItem"
         nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-click="goto('page1')" name="page1">
-          Page One
+        <md-nav-item md-nav-sref="hello" name="hello">
+          Hello
         </md-nav-item>
-        <md-nav-item md-nav-click="goto('page2')" name="page2">
+        <md-nav-item md-nav-sref="one" name="page2">
           Page Two
         </md-nav-item>
-        <md-nav-item md-nav-click="goto('page3')" name="page3">
+        <md-nav-item md-nav-sref="two" name="page3">
           Page Three
         </md-nav-item>
         <!-- these require actual routing with ui-router or ng-route, so they
@@ -29,8 +27,6 @@
         </md-nav-item>
         -->
       </md-nav-bar>
-    </md-content>chr
-    <a ui-sref="hello" ui-sref-active="active">Hello</a>
     <ui-view></ui-view>
   </body>
 </html>

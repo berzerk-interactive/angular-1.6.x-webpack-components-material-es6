@@ -11,9 +11,27 @@ angular.module('app', [
       url: '/hello',
       component: 'hello'
     }
+  var oneState = {
+      name: 'one',
+      url: '/one',
+      component: 'one'
+    }
+  var twoState = {
+      name: 'two',
+      url: '/two',
+      component: 'two'
+    }
     $stateProvider.state(helloState);
+    $stateProvider.state(oneState);
+    $stateProvider.state(twoState);
 })
 .component('hello', {
   template: require('./hello/hello.html'),
   controller: helloCtrl
+})
+.component('one', {
+  template: '<h1>one</h1>',
+})
+.component('two', {
+  template: '<h1>two</h1>'
 })

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>app</title>
-    <base href="/">
+    <base href="/"/>
   </head>
   <body >
       <md-nav-bar
@@ -18,6 +18,12 @@
         <md-nav-item md-nav-sref="two" name="page3">
           Page Three
         </md-nav-item>
+        <div>
+          <md-button ng-click="toggleLeft()"
+            class="md-primary" hide-gt-md>
+            Toggle left
+          </md-button>
+        </div>'
         <!-- these require actual routing with ui-router or ng-route, so they
         won't work in the demo
         <md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
@@ -28,6 +34,29 @@
         </md-nav-item>
         -->
       </md-nav-bar>
-    <ui-view></ui-view>
+      <section layout="row" flex>
+      <md-sidenav
+          class="md-sidenav-left"
+          md-component-id="left"
+          md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+          <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        </md-toolbar>
+        <md-content layout-padding ng-controller="LeftCtrl">
+          <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close Sidenav Left
+          </md-button>
+          <p hide show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior,
+            narrow your display.
+          </p>
+        </md-content>
+
+      </md-sidenav>
+      <md-content flex layout-padding>
+        <ui-view></ui-view>
+      </md-content>
+    </section>
   </body>
 </html>

@@ -1,10 +1,13 @@
 class helloCtrl {
-  constructor() {
-
+  constructor(sidenavService) {
+    this.sidenavService = sidenavService;
+  }
+  toggle(){
+    this.sidenavService.toggle();
   }
   $onInit(){
-    
+
   }
 }
-helloCtrl.$inject= ['$sce'];
+helloCtrl.$inject= ['sidenavService'];
 export default helloCtrl;

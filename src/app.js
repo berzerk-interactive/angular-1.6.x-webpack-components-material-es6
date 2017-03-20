@@ -14,6 +14,9 @@ angular.module('app', [
   template: require('./hello/hello.html'),
   controller: helloCtrl
 })
+.component('sideNav', {
+  template: require('./sidenav/sidenav.html'),
+})
 .component('one', {
   template: '<h1>one</h1>',
 })

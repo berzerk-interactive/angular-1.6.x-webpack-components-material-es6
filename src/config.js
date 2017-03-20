@@ -2,7 +2,11 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
   var helloState = {
       name: 'hello',
       url: '/hello',
-      component: 'hello'
+      // component: 'hello'
+      views: {
+        side: 'helloSide',
+        content: 'hello',
+      }
     }
   var appState = {
     name:'app',

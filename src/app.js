@@ -20,6 +20,9 @@ angular.module('app', [
 .component('one', {
   template: '<h1>one</h1>',
 })
+.component('helloSide', {
+  template: '<h1>helloSide</h1>',
+})
 .component('two', {
   template: '<h1>two</h1>'
 })

@@ -16,12 +16,18 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
   var oneState = {
       name: 'one',
       url: '/one',
-      component: 'one'
+      views: {
+        side: 'helloSide',
+        content: 'one',
+      }
     }
   var twoState = {
       name: 'two',
       url: '/two',
-      component: 'two'
+      views: {
+        side: 'helloSide',
+        content: 'two',
+      }
     }
     $stateProvider.state(helloState);
     $stateProvider.state(appState);

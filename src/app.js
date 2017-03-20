@@ -14,14 +14,14 @@ angular.module('app', [
   template: require('./hello/hello.html'),
   controller: helloCtrl
 })
+.component('helloSide', {
+  template: '<h1>helloSide</h1>',
+})
 .component('sideNav', {
   template: require('./sidenav/sidenav.html'),
 })
 .component('one', {
   template: '<h1>one</h1>',
-})
-.component('helloSide', {
-  template: '<h1>helloSide</h1>',
 })
 .component('two', {
   template: '<h1>two</h1>'

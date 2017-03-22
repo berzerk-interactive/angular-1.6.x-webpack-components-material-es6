@@ -2,7 +2,6 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
   var helloState = {
       name: 'hello',
       url: '/hello',
-      // component: 'hello'
       views: {
         side: 'helloSide',
         content: 'hello',
@@ -14,11 +13,11 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     redirectTo: 'hello'
   }
   var oneState = {
-      name: 'one',
-      url: '/one',
+      name: 'about',
+      url: '/about',
       views: {
         side: 'helloSide',
-        content: 'one',
+        content: 'about',
       }
     }
   var twoState = {

@@ -1,7 +1,8 @@
 import helloCtrl from "./hello/hello.ctrl"
 import "style-loader!css-loader!sass-loader!../node_modules/angular-material/angular-material.scss";
 import config from './config'
-import LeftCtrl from './sidenav/Left.ctrl';
+import leftCtrl from './sidenav/left.ctrl';
+import aboutCtrl from './about/about.ctrl';
 import sidenavService from './sidenav/sidenav.service';
 angular.module('app', [
   'ui.router',
@@ -9,7 +10,7 @@ angular.module('app', [
 ])
 .config(config)
 .service('sidenavService', sidenavService)
-.controller('LeftCtrl', LeftCtrl)
+.controller('leftCtrl', leftCtrl)
 .component('hello', {
   template: require('./hello/hello.html'),
   controller: helloCtrl
@@ -20,8 +21,9 @@ angular.module('app', [
 .component('sideNav', {
   template: require('./sidenav/sidenav.html'),
 })
-.component('one', {
-  template: '<h1>one</h1>',
+.component('about', {
+  controller: aboutCtrl,
+  template: require('./about/about.html'),
 })
 .component('two', {
   template: '<h1>two</h1>'

@@ -15,6 +15,13 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
   var oneState = {
       name: 'about',
       url: '/about',
+      lazyLoad: function determineDate() {
+        import('moment').then(function(moment) {
+          console.log(moment().format());
+        }).catch(function(err) {
+          console.log('Failed to load moment', err);
+        });
+      },
       views: {
         side: 'helloSide',
         content: 'about',

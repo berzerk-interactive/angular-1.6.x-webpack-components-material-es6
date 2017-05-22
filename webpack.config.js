@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var es2015 = require('babel-preset-es2015');
 
 module.exports = {
   entry: {
@@ -49,7 +49,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [
-            		["es2015", { "modules": false }]
+            		[es2015]
             	]}
         }]
         // babelrc: true,

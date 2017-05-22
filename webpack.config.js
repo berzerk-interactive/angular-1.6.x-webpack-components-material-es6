@@ -11,7 +11,8 @@ module.exports = {
       "angular-aria",
       "angular-animate",
       "angular-resource",
-      "angular-ui-router",
+      "angular-sanitize",
+      "@uirouter/angularjs",
       "angular-material"
     ],
   },

@@ -173,7 +173,7 @@ module.exports = {
      minChunks: 2
    }),
    new webpack.optimize.UglifyJsPlugin({
-    // mangle: false,
+    mangle: false,
     compress: {
         warnings: false
     }

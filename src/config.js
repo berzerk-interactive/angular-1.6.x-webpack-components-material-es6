@@ -38,8 +38,15 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     const lazyState = {
       name: 'lazy.**',
       url: '/lazy',
-      lazyLoad: (transition) =>
-         transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
+      lazyLoad: (transition) => {
+        import('./lazy/lazy.module').then((module) => {
+          transition.injector().get('$ocLazyLoad').inject('lazy')
+          // transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
+        })
+          // transition.injector().get('$ocLazyLoad').inject(import('./lazy/lazy.module'))
+
+      }
+
     }
     $stateProvider.state(helloState);
     $stateProvider.state(appState);

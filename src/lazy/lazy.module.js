@@ -1,12 +1,27 @@
 
 import lazyCtrl from './lazy.ctrl.js'
-import lazySidebarCtrl from './lazy-sidebar.ctrl.js'
+import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl.js'
+import lazyService from './lazy.service'
+
 import './lazy.scss'
+
 let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
-
-
-
-lazyModule.config($stateProvider => {
+.component('lazyComponent', {
+  template: require('./lazy.component.html'),
+  controller: lazyCtrl
+})
+.component('lazySidebar', {
+  template: require('./lazy-sidebar/lazy-sidebar.html'),
+  controller: lazySidebarCtrl
+})
+.component('fooComponent', {
+  bindings: { fooData: '<' },
+  template: `
+    <h3>The foo component</h1>
+    {{ $ctrl.fooData }}
+  `
+})
+.config($stateProvider => {
   console.log('registering lazy, foo')
 
   $stateProvider.state('lazy', {
@@ -23,44 +38,7 @@ lazyModule.config($stateProvider => {
     resolve: { fooData: () => 'Some foo resolve data' }
   })
 })
-
-lazyModule.service('lazyService', function($http) {
-  this.getServiceData = function() {
-    return $http.get('lazy/serviceData.json').then(resp => resp.data);
-  }
-})
-
-
-lazyModule.component('lazyComponent', {
-  template: `
-    <h1>Lazy Module component!</h1>
-    <ul>
-      <li><a ui-sref=".foo">Foo</a></li>
-      <li><a ui-sref=".bar">Bar</a></li>
-      <li><a ng-click="$ctrl.toggle()">toggle side nav</a></li>
-    </ul>
-    <ui-view></ui-view>
-  `,
-  controller: lazyCtrl
-})
-
-lazyModule.component('lazySidebar', {
-  template: `
-    <h1>Lazy Module sidebar!</h1>
-    <a ui-sref=".foo">Foo</a><br>
-    <a ui-sref=".bar">Bar</a><br>
-    <a ng-click="$ctrl.toggle()">toggle side nav</a>
-  `,
-  controller: lazySidebarCtrl
-})
-
-lazyModule.component('fooComponent', {
-  bindings: { fooData: '<' },
-  template: `
-    <h3>The foo component</h1>
-    {{ $ctrl.fooData }}
-  `
-});
+.service('lazyService', lazyService)
 
 angular.module('lazy.bar', [])
 .config($stateProvider => {

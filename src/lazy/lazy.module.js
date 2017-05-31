@@ -1,5 +1,8 @@
 
+// import lazyCtrl from './lazy.ctrl.js'
 let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
+
+
 
 lazyModule.config($stateProvider => {
   console.log('registering lazy, foo')
@@ -7,7 +10,7 @@ lazyModule.config($stateProvider => {
   $stateProvider.state('lazy', {
     url: '/lazy',
     views: {
-      side: 'helloSide',
+      side: 'lazySidebar',
       content: 'lazyComponent'
     }
   })
@@ -26,13 +29,43 @@ lazyModule.service('lazyService', function($http) {
 })
 
 
+class lazyCtrl {
+  constructor(sidenavService) {
+    this.sidenavService = sidenavService;
+  }
+  toggle(){
+    this.sidenavService.toggle();
+  }
+}
+
 lazyModule.component('lazyComponent', {
   template: `
     <h1>Lazy Module component!</h1>
     <a ui-sref=".foo">Foo</a><br>
     <a ui-sref=".bar">Bar</a><br>
+    <a ng-click="$ctrl.toggle()">toggle side nav</a>
     <ui-view></ui-view>
-  `
+  `,
+  controller: lazyCtrl
+})
+
+
+class lazySidebarCtrl {
+  constructor(sidenavService) {
+    this.sidenavService = sidenavService;
+  }
+  toggle(){
+    this.sidenavService.toggle();
+  }
+}
+lazyModule.component('lazySidebar', {
+  template: `
+    <h1>Lazy Module sidebar!</h1>
+    <a ui-sref=".foo">Foo</a><br>
+    <a ui-sref=".bar">Bar</a><br>
+    <a ng-click="$ctrl.toggle()">toggle side nav</a>
+  `,
+  controller: lazySidebarCtrl
 })
 
 lazyModule.component('fooComponent', {

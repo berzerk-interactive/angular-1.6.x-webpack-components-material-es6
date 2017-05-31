@@ -1,5 +1,7 @@
 
-// import lazyCtrl from './lazy.ctrl.js'
+import lazyCtrl from './lazy.ctrl.js'
+import lazySidebarCtrl from './lazy-sidebar.ctrl.js'
+import './lazy.scss'
 let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
 
 
@@ -29,35 +31,19 @@ lazyModule.service('lazyService', function($http) {
 })
 
 
-class lazyCtrl {
-  constructor(sidenavService) {
-    this.sidenavService = sidenavService;
-  }
-  toggle(){
-    this.sidenavService.toggle();
-  }
-}
-
 lazyModule.component('lazyComponent', {
   template: `
     <h1>Lazy Module component!</h1>
-    <a ui-sref=".foo">Foo</a><br>
-    <a ui-sref=".bar">Bar</a><br>
-    <a ng-click="$ctrl.toggle()">toggle side nav</a>
+    <ul>
+      <li><a ui-sref=".foo">Foo</a></li>
+      <li><a ui-sref=".bar">Bar</a></li>
+      <li><a ng-click="$ctrl.toggle()">toggle side nav</a></li>
+    </ul>
     <ui-view></ui-view>
   `,
   controller: lazyCtrl
 })
 
-
-class lazySidebarCtrl {
-  constructor(sidenavService) {
-    this.sidenavService = sidenavService;
-  }
-  toggle(){
-    this.sidenavService.toggle();
-  }
-}
 lazyModule.component('lazySidebar', {
   template: `
     <h1>Lazy Module sidebar!</h1>

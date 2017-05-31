@@ -1,0 +1,14 @@
+ul {
+  li {
+    list-style-type: none;
+    float: left;
+    a {
+      padding: 5px;
+      background: blue;
+      color: white;
+      &:hover {
+        background: red;
+      }
+    }
+  }
+}

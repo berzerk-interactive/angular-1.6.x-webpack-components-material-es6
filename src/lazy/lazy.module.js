@@ -6,7 +6,6 @@ lazyModule.config($stateProvider => {
 
   $stateProvider.state('lazy', {
     url: '/lazy',
-    // component: 'lazyComponent'
     views: {
       side: 'helloSide',
       content: 'lazyComponent'
@@ -15,18 +14,14 @@ lazyModule.config($stateProvider => {
 
   $stateProvider.state('lazy.foo', {
     url: '/foo',
-    // component: 'fooComponent',
-    views: {
-      side: 'helloSide',
-      content: 'fooComponent'
-    },
+    component: 'fooComponent',
     resolve: { fooData: () => 'Some foo resolve data' }
   })
 })
 
 lazyModule.service('lazyService', function($http) {
   this.getServiceData = function() {
-    // return $http.get('serviceData.json').then(resp => resp.data);
+    return $http.get('lazy/serviceData.json').then(resp => resp.data);
   }
 })
 
@@ -54,11 +49,7 @@ angular.module('lazy.bar', [])
 
    $stateProvider.state('lazy.bar', {
     url: '/bar',
-    // component: 'barComponent',
-    views: {
-      side: 'helloSide',
-      content: 'barComponent'
-    },
+    component: 'barComponent',
     resolve: { serviceData: (lazyService) => lazyService.getServiceData() }
   });
 })

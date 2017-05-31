@@ -1,5 +1,5 @@
 function config ($stateProvider, $locationProvider,$urlRouterProvider) {
-  var helloState = {
+  const helloState = {
       name: 'hello',
       url: '/hello',
       views: {
@@ -7,12 +7,12 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
         content: 'hello',
       }
     }
-  var appState = {
+  const appState = {
     name:'app',
     url: "/",
     redirectTo: 'hello'
   }
-  var oneState = {
+  const oneState = {
       name: 'about',
       url: '/about',
       lazyLoad: function determineDate() {
@@ -27,7 +27,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
         content: 'about',
       }
     }
-  var twoState = {
+  const twoState = {
       name: 'two',
       url: '/two',
       views: {
@@ -35,10 +35,17 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
         content: 'two',
       }
     }
+    const lazyState = {
+      name: 'lazy.**',
+      url: '/lazy',
+      lazyLoad: (transition) =>
+         transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
+    }
     $stateProvider.state(helloState);
     $stateProvider.state(appState);
     $stateProvider.state(oneState);
     $stateProvider.state(twoState);
+    $stateProvider.state(lazyState)
     $locationProvider.html5Mode(true);
    $urlRouterProvider.otherwise("/hello");
 

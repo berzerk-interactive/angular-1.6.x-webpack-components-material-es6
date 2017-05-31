@@ -13,7 +13,8 @@ module.exports = {
       "angular-resource",
       "angular-sanitize",
       "@uirouter/angularjs",
-      "angular-material"
+      "angular-material",
+      "ocLazyLoad"
     ],
   },
   output: {

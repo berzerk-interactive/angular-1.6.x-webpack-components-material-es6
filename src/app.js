@@ -6,7 +6,8 @@ import aboutCtrl from './about/about.ctrl';
 import sidenavService from './sidenav/sidenav.service';
 angular.module('app', [
   'ui.router',
-  'ngMaterial'
+  'ngMaterial',
+  'oc.lazyLoad'
 ])
 .config(config)
 .service('sidenavService', sidenavService)

@@ -60,13 +60,25 @@ module.exports = {
       //load all css into a js bundle which you can require
       {
           test: /\.css$/,
-          use: 'style-loader!css-loader',
+          // use: 'style-loader!css-loader',
+          use: [{
+               loader: "style-loader" // creates style nodes from JS strings
+           }, {
+               loader: "css-loader" // translates CSS into CommonJS
+           }],
           exclude: /node_modules/
       },
       //run all sass thru loader, then css loader, then into js bundle
       {
           test: /\.scss$/,
-          use: 'style-loader!css-loader!sass-loader',
+          // use: 'style-loader!css-loader!sass-loader',
+          use: [{
+               loader: "style-loader" // creates style nodes from JS strings
+           }, {
+               loader: "css-loader" // translates CSS into CommonJS
+           }, {
+               loader: "sass-loader" // compiles Sass to CSS
+           }],
           exclude: /node_modules/
       },
       //load images thru loader and either produce data url or url https://github.com/webpack/url-loader

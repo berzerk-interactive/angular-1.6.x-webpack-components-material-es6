@@ -2,6 +2,7 @@
 import lazyCtrl from './lazy.ctrl.js'
 import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl.js'
 import lazyService from './lazy.service'
+import lazyBarModule from './lazy-bar-module/lazy-bar.module'
 
 import './lazy.scss'
 
@@ -39,22 +40,3 @@ let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
   })
 })
 .service('lazyService', lazyService)
-
-angular.module('lazy.bar', [])
-.config($stateProvider => {
-  console.log('registering lazy bar')
-
-   $stateProvider.state('lazy.bar', {
-    url: '/bar',
-    component: 'barComponent',
-    resolve: { serviceData: (lazyService) => lazyService.getServiceData() }
-  });
-})
-.component('barComponent', {
-  bindings: { serviceData: '<' },
-  template: `
-    <h3>The bar component</h1>
-    Data from lazy service:
-    <pre>{{ $ctrl.serviceData | json }}</pre>
-  `
-});

@@ -54,7 +54,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     $stateProvider.state(twoState);
     $stateProvider.state(lazyState)
     $locationProvider.html5Mode(true);
-   $urlRouterProvider.otherwise("/hello");
+    $urlRouterProvider.otherwise("/hello");
 
 }
 config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider'];

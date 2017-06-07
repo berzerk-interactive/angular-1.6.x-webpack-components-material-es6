@@ -4,12 +4,11 @@
   "description": "A demo of Angular-1.6.x, webpack 2, ES6, components, ui-router, named ui-router views",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start",
     "dev": "webpack-dev-server --open --history-api-fallback --inline --progress",
     "start": "http-server dist",
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run"
   },
   "repository": {
@@ -44,6 +43,7 @@
     "moment": "^2.18.1"
   },
   "devDependencies": {
+    "angular-mocks": "^1.5.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -51,18 +51,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-native-modules": "^6.9.4",
     "babel-preset-latest": "^6.22.0",
+    "copy-webpack-plugin": "4.0.1",
     "css-loader": "^0.28.2",
+    "es6-promise-promise": "^1.0.0",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
     "html-webpack-plugin": "^2.28.0",
     "http-server": "^0.10.0",
-    "node-sass": "^4.5.0",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.18.0",
-    "null-loader": "^0.1.1",
-    "copy-webpack-plugin": "4.0.1",
-    "extract-text-webpack-plugin": "2.0.0-beta.5",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5",
     "istanbul-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.3.4",
     "karma": "^1.1.0",
@@ -72,8 +66,14 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "2.0.1",
+    "node-sass": "^4.5.0",
+    "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.4",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.5.1",
-    "angular-mocks": "^1.5.0"
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.18.0",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }

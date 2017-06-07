@@ -198,6 +198,9 @@ module.exports = function makeWebpackConfig() {
           plugins: [autoprefixer]
         }
       }
+    }),
+    new webpack.ProvidePlugin({
+      Promise: 'es6-promise-promise'
     })
   ];
 
@@ -216,6 +219,15 @@ module.exports = function makeWebpackConfig() {
       // Disabled when in test mode or not in build mode
       new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
     )
+    config.performance = {
+        hints: "warning", // enum
+        maxAssetSize: 200000, // int (in bytes),
+        maxEntrypointSize: 400000, // int (in bytes)
+        assetFilter: function(assetFilename) {
+          // Function predicate that provides asset filenames
+          return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+        }
+    }
   }
 
   // Add build specific plugins
@@ -250,14 +262,6 @@ module.exports = function makeWebpackConfig() {
     contentBase: './src/',
     stats: 'minimal'
   };
-  config.performance = {
-      hints: "warning", // enum
-      maxAssetSize: 200000, // int (in bytes),
-      maxEntrypointSize: 400000, // int (in bytes)
-      assetFilter: function(assetFilename) {
-        // Function predicate that provides asset filenames
-        return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-      }
-  }
+
   return config;
 }();

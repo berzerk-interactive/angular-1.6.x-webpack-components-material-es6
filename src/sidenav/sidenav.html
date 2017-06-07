@@ -6,10 +6,11 @@
   <md-toolbar class="md-theme-indigo">
     <h1 class="md-toolbar-tools">Sidenav Left</h1>
   </md-toolbar>
-  <md-content layout-padding ng-controller="leftCtrl">
-    <md-button ng-click="$ctrl.close()" class="md-primary" hide-gt-md>
+  <md-content layout-padding>
+    <md-button ng-click="$ctrl.close()" class="md-primary md-raised" hide-gt-md>
       Close Sidenav Left
     </md-button>
+
     <ui-view name="side"></ui-view>
     <p hide show-gt-md>
       This sidenav is locked open on your device. To go back to the default behavior,

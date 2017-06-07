@@ -11,7 +11,6 @@ angular.module('app', [
 ])
 .config(config)
 .service('sidenavService', sidenavService)
-.controller('leftCtrl', leftCtrl)
 .component('hello', {
   template: require('./hello/hello.html'),
   controller: helloCtrl
@@ -20,6 +19,7 @@ angular.module('app', [
   template: '<h1>helloSide</h1>',
 })
 .component('sideNav', {
+  controller: leftCtrl,
   template: require('./sidenav/sidenav.html'),
 })
 .component('about', {

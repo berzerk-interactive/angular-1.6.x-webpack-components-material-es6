@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --open",
     "start": "http-server dist",
-    "install": "webpack",
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
@@ -59,6 +58,9 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.0",
+    "null-loader": "^0.1.1",
+    "copy-webpack-plugin": "4.0.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",
     "istanbul-instrumenter-loader": "^1.0.0",
@@ -71,6 +73,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "2.0.1",
     "phantomjs-prebuilt": "^2.1.4",
-    "rimraf": "^2.5.1"
+    "rimraf": "^2.5.1",
+    "angular-mocks": "^1.5.0"
   }
 }

@@ -1,9 +1,16 @@
 import appConfig from './config';
 
 class $stateProviderMock {
-  state(){
-    console.log('state');
+  constructor(){
+    this.states =[]
+  }
+  state(state){
+    console.log(state);
+    this.states.push(state)
     //TODO: extend this mock
+  }
+  get(){
+    return this.states
   }
 }
 class $locationProviderMock {
@@ -29,6 +36,9 @@ describe('about', () => {
       expect(config).toExist;
       //TODO: extend this test for all the states
     });
+    // it('should have all the states', () => {
+    //   expect(config.registeredStates).toBe(6)
+    // })
 
   });
 });

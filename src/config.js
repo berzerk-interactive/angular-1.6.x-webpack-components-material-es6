@@ -70,6 +70,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     $stateProvider.state(lazyState)
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/hello");
+    this.registeredStates = $stateProvider.get();
 
 }
 config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider'];

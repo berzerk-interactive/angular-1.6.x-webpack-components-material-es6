@@ -35,32 +35,32 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
         content: 'two',
       }
     }
-    const lazyState = {
-      name: 'lazy.**',
-      url: '/lazy',
-      //TODO: fix bug with import.then
-      // lazyLoad: (transition) => {
-      //   import('./lazy/lazy.module').then((module) => {
-      //     transition.injector().get('$ocLazyLoad').inject('lazy')
-      //     // transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
-      //   })
-      //     // transition.injector().get('$ocLazyLoad').inject(import('./lazy/lazy.module'))
-      //
-      //
-      // }
-      resolve: {
-          foo: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
-              let deferred = $q.defer();
-              require.ensure([], function () {
-                  let module = require('./lazy/lazy.module.js');
-                  $ocLazyLoad.load({
-                      name: 'lazy'
-                  });
-                  deferred.resolve(module);
-              });
+  const lazyState = {
+    name: 'lazy.**',
+    url: '/lazy',
+    //TODO: fix bug with import.then
+    // lazyLoad: (transition) => {
+    //   import('./lazy/lazy.module').then((module) => {
+    //     transition.injector().get('$ocLazyLoad').inject('lazy')
+    //     // transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
+    //   })
+    //     // transition.injector().get('$ocLazyLoad').inject(import('./lazy/lazy.module'))
+    //
+    //
+    // }
+    resolve: {
+        foo: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
+            let deferred = $q.defer();
+            require.ensure([], function () {
+                let module = require('./lazy/lazy.module.js');
+                $ocLazyLoad.load({
+                    name: 'lazy'
+                });
+                deferred.resolve(module);
+            });
 
-              return deferred.promise;
-          }]
+            return deferred.promise;
+        }]
       }
     }
     $stateProvider.state(helloState);

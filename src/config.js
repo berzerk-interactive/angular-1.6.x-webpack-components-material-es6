@@ -39,29 +39,29 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     name: 'lazy.**',
     url: '/lazy',
     //TODO: fix bug with import.then
-    // lazyLoad: (transition) => {
-    //   import('./lazy/lazy.module').then((module) => {
-    //     transition.injector().get('$ocLazyLoad').inject('lazy')
-    //     // transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
-    //   })
-    //     // transition.injector().get('$ocLazyLoad').inject(import('./lazy/lazy.module'))
-    //
-    //
-    // }
-    resolve: {
-        foo: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
-            let deferred = $q.defer();
-            require.ensure([], function () {
-                let module = require('./lazy/lazy.module.js');
-                $ocLazyLoad.load({
-                    name: 'lazy'
-                });
-                deferred.resolve(module);
-            });
+    lazyLoad: (transition) => {
+      import('./lazy/lazy.module').then((module) => {
+        transition.injector().get('$ocLazyLoad').inject('lazy')
+        // transition.injector().get('$ocLazyLoad').load('./lazy/lazy.module.js')
+      })
+        // transition.injector().get('$ocLazyLoad').inject(import('./lazy/lazy.module'))
 
-            return deferred.promise;
-        }]
-      }
+
+    }
+    // resolve: {
+    //     foo: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
+    //         let deferred = $q.defer();
+    //         require.ensure([], function () {
+    //             let module = require('./lazy/lazy.module.js');
+    //             $ocLazyLoad.load({
+    //                 name: 'lazy'
+    //             });
+    //             deferred.resolve(module);
+    //         });
+    //
+    //         return deferred.promise;
+    //     }]
+    //   }
     }
     $stateProvider.state(helloState);
     $stateProvider.state(appState);
@@ -70,6 +70,9 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     $stateProvider.state(lazyState)
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/hello");
+    $urlRouterProvider.stateRegistry.register(lazyState);
+    // https://github.com/ui-router/sample-app-angularjs/blob/080cdc2cd16bca839de41fff2b5078b99628b71f/app/bootstrap/ngmodule.js
+
 }
 config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider'];
 export default config;

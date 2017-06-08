@@ -24,7 +24,7 @@ describe('about', () => {
     });
     it('should run toggle sidebar', () => {
       ctrl.toggle();
-      // log
+      // TODO: extend test here
     });
     it('should have paragraph after onInit', () => {
       ctrl.$onInit();

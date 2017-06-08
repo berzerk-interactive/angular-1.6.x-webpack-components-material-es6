@@ -24,7 +24,7 @@ describe('hello', () => {
     });
     it('should run toggle sidebar', () => {
       ctrl.toggle();
-      // log
+      // TODO: extend test here
     });
   });
 });

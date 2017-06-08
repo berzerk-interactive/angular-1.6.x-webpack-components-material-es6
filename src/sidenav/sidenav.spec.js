@@ -1,26 +1,15 @@
 import sidenavService from './sidenav.service';
 
-class mdSidenavMock {
-  constructor(){
-    
-  }
-  // toggle(name){
-  //   console.log('it toggled' + name);
-  // }
-  toggle(name){
-      console.log('it called mdSidenavMock' + name);
-      return new Promise( (resolve, reject) => {
-        resolve('Success!');
-        // or
-        // reject ("Error!");
-      } );
-  }
-};
-// let mdSidenavMock = new Promise( (resolve, reject) => {
-//   resolve('Success!');
-//   // or
-//   // reject ("Error!");
-// } );
+function mdSidenavMock(sideNavId) {
+      return {toggle: ()=> {
+        return new Promise( (resolve, reject) => {
+          resolve('Success!');
+          // or
+          // reject ("Error!");
+        } );
+      }
+    };
+}
 
 let  $logMock = new Promise( (resolve, reject) => {
   resolve('Success!');
@@ -33,12 +22,11 @@ describe('Service', () => {
     let service;
 
     beforeEach(() => {
-      // angular.mock.module(app);
-
-      // angular.mock.inject(($controller) => {
-      //   service = $controller('AppCtrl', {});
-      // });
-      service = new sidenavService(new mdSidenavMock, $logMock);
+      // let sideNavCloseMock = jasmine.createSpy();
+      // function mdSidenavMock2(sideNavId) {
+      //       return {toggle: sideNavCloseMock }
+      // }
+      service = new sidenavService(mdSidenavMock, $logMock);
     });
 
     it('should contain toggle sidebar', () => {
@@ -46,7 +34,6 @@ describe('Service', () => {
     });
     it('should run toggle sidebar', () => {
       service.toggle();
-      // log
     });
   });
 });

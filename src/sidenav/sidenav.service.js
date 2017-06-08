@@ -8,6 +8,7 @@ class sidenavService {
           });
 
       };
+
   }
 }
 sidenavService.$inject = ['$mdSidenav', '$log']

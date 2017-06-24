@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var es2015 = require('babel-preset-es2015');
+// var es2015 = require('babel-preset-es2015');
 
 module.exports = {
   entry: {
@@ -196,4 +196,4 @@ module.exports = {
         title: 'title'
     }),
   ],
-}
+};

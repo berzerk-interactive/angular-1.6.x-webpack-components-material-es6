@@ -1,12 +1,11 @@
-'use strict';
-
 // Modules
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var es2015 = require('babel-preset-es2015');
+// NOTE; for later use
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var es2015 = require('babel-preset-es2015');
 
 /**
  * Env
@@ -174,7 +173,7 @@ module.exports = function makeWebpackConfig() {
       query: {
         esModules: true
       }
-    })
+    });
   }
 
   /**
@@ -218,7 +217,7 @@ module.exports = function makeWebpackConfig() {
       // Extract css files
       // Disabled when in test mode or not in build mode
       new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
-    )
+    );
     config.performance = {
         hints: "warning", // enum
         maxAssetSize: 200000, // int (in bytes),
@@ -227,7 +226,7 @@ module.exports = function makeWebpackConfig() {
           // Function predicate that provides asset filenames
           return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
         }
-    }
+    };
   }
 
   // Add build specific plugins
@@ -250,7 +249,7 @@ module.exports = function makeWebpackConfig() {
       // new CopyWebpackPlugin([{
       //   from: __dirname + '/src/public'
       // }])
-    )
+    );
   }
 
   /**

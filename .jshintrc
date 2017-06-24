@@ -2,6 +2,8 @@
   "undef": true,
   "unused": true,
   "node": true,
+  "esversion": 6,
+  "jasmine": true,
   "globals": {
     "MY_GLOBAL": true,
     "require": false

@@ -1,11 +1,11 @@
 
-import lazyCtrl from './lazy.ctrl.js'
-import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl.js'
-import lazyService from './lazy.service'
-import lazyBarModule from './lazy-bar-module/lazy-bar.module'
-import lazyConfig from './lazy.config'
+import lazyCtrl from './lazy.ctrl.js';
+import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl.js';
+import lazyService from './lazy.service';
+import lazyBarModule from './lazy-bar-module/lazy-bar.module';
+import lazyConfig from './lazy.config';
 
-import './lazy.scss'
+import './lazy.scss';
 
 let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
 .component('lazyComponent', {
@@ -24,6 +24,6 @@ let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
   `
 })
 .config(lazyConfig)
-.service('lazyService', lazyService)
-lazyModule.$inject = ['ui.router', 'lazy.bar']
+.service('lazyService', lazyService);
+lazyModule.$inject = ['ui.router', 'lazy.bar'];
 export default lazyBarModule;

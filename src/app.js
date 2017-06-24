@@ -1,6 +1,6 @@
-import helloCtrl from "./hello/hello.ctrl"
+import helloCtrl from "./hello/hello.ctrl";
 import "style-loader!css-loader!sass-loader!../node_modules/angular-material/angular-material.scss";
-import config from './config'
+import config from './config';
 import leftCtrl from './sidenav/left.ctrl';
 import aboutCtrl from './about/about.ctrl';
 import sidenavService from './sidenav/sidenav.service';
@@ -28,4 +28,4 @@ angular.module('app', [
 })
 .component('two', {
   template: '<h1>two</h1>'
-})
+});

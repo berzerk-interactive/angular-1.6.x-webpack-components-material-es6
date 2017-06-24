@@ -10,4 +10,4 @@ let lazyBarModule = angular.module('lazy.bar', [])
   `
 });
 
-export default lazyBarModule
+export default lazyBarModule;

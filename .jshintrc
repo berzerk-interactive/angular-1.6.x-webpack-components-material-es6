@@ -3,6 +3,7 @@
   "unused": true,
   "node": true,
   "esversion": 6,
+  "esnext": true,
   "jasmine": true,
   "globals": {
     "MY_GLOBAL": true,

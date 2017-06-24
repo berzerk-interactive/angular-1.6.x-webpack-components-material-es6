@@ -1,5 +1,7 @@
 # angular-1.6.x-webpack-components-es6
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e522f15d02844555beb380ef1531c39b)](https://www.codacy.com/app/leeblazek/angular-1.6.x-webpack-components-material-es6?utm_source=github.com&utm_medium=referral&utm_content=berzerk-interactive/angular-1.6.x-webpack-components-material-es6&utm_campaign=badger)
+
 ## This is sample project that demonstrates:
 1. NG1 + ES6
 2. Ui-router 1.x with named views, child views, and lazy loading

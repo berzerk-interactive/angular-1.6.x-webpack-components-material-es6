@@ -1,4 +1,4 @@
-import lazyBarConfig from './lazy-bar.config'
+import lazyBarConfig from './lazy-bar.config';
 let lazyBarModule = angular.module('lazy.bar', [])
 .config(lazyBarConfig)
 .component('barComponent', {

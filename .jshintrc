@@ -5,7 +5,7 @@
   "esnext": true,
   "jasmine": true,
   "globals": {
-    "MY_GLOBAL": true,
-    "require": false
+    "require": false,
+    "angular": false
   }
 }

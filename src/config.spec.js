@@ -13,6 +13,7 @@ class $stateProviderMock {
     return this.states
   }
 }
+
 class $locationProviderMock {
   html5Mode(){
     console.log('html5Mode');
@@ -23,13 +24,16 @@ class $urlRouterProviderMock {
     console.log('otherwise');
   }
 }
+class $ocLazyLoadProviderMock {
+  config(){}
+}
 describe('about', () => {
 
   describe('config', () => {
     let config;
 
     beforeEach(() => {
-      config = appConfig(new $stateProviderMock, new $locationProviderMock, new $urlRouterProviderMock);
+      config = appConfig(new $stateProviderMock, new $locationProviderMock, new $urlRouterProviderMock, new $ocLazyLoadProviderMock);
     });
 
     it('should contain toggle sidebar', () => {

@@ -2,7 +2,6 @@
   "undef": true,
   "unused": true,
   "node": true,
-  "esversion": 6,
   "esnext": true,
   "jasmine": true,
   "globals": {

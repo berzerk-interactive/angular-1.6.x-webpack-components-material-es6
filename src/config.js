@@ -6,17 +6,17 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
         side: 'helloSide',
         content: 'hello',
       }
-    }
+    };
   const appState = {
     name:'app',
     url: "/",
     redirectTo: 'hello'
-  }
+  };
   const oneState = {
       name: 'about',
       url: '/about',
       lazyLoad: function determineDate() {
-        import('moment').then(function(moment) {
+        return import('moment').then(function(moment) {
           console.log(moment().format());
         }).catch(function(err) {
           console.log('Failed to load moment', err);

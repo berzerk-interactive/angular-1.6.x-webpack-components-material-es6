@@ -40,3 +40,5 @@ let lazyModule = angular.module('lazy', ['ui.router', 'lazy.bar'])
   })
 })
 .service('lazyService', lazyService)
+lazyModule.$inject = ['ui.router', 'lazy.bar']
+export default lazyBarModule;

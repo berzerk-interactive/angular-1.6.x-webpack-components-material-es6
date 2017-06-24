@@ -48,6 +48,21 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
         console.log('Failed to load module', err);
       });
     }
+    // NOTE: old resolve method here for reference
+    // resolve: {
+    //   foo: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {
+    //      let deferred = $q.defer();
+    //      require.ensure([], function () {
+    //          let module = require('./lazy/lazy.module.js');
+    //          $ocLazyLoad.load({
+    //              name: 'lazy'
+    //          });
+    //          deferred.resolve(module);
+    //      });
+    //
+    //      return deferred.promise;
+    //   }]
+    // }
   }
   $stateProvider.state(helloState);
   $stateProvider.state(appState);

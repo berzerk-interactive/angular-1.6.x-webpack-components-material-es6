@@ -1,13 +1,6 @@
+import lazyBarConfig from './lazy-bar.config'
 let lazyBarModule = angular.module('lazy.bar', [])
-.config($stateProvider => {
-  console.log('registering lazy bar')
-
-   $stateProvider.state('lazy.bar', {
-    url: '/bar',
-    component: 'barComponent',
-    resolve: { serviceData: (lazyService) => lazyService.getServiceData() }
-  });
-})
+.config(lazyBarConfig)
 .component('barComponent', {
   bindings: { serviceData: '<' },
   template: `

@@ -43,9 +43,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
       const $ocLazyLoad = transition.injector().get('$ocLazyLoad');
       return import('./lazy/lazy.module.js').then(function (module) {
         console.log(module);
-        $ocLazyLoad.load({
-            name: 'lazy'
-        });
+        $ocLazyLoad.load({name: 'lazy'});
       }).catch(function(err) {
         console.log('Failed to load module', err);
       });
@@ -58,12 +56,8 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
   $stateProvider.state(lazyState)
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise("/hello");
-  $ocLazyLoadProvider.config({
-    debug: true
-  });
-
+  $ocLazyLoadProvider.config({debug: true});
     // https://github.com/ui-router/sample-app-angularjs/blob/080cdc2cd16bca839de41fff2b5078b99628b71f/app/bootstrap/ngmodule.js
-
 }
 config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider', '$ocLazyLoadProvider'];
 export default config;

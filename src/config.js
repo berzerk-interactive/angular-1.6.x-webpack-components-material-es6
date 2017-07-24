@@ -1,3 +1,4 @@
+/* @ngInject */
 function config ($stateProvider, $locationProvider,$urlRouterProvider) {
   const helloState = {
       name: 'hello',
@@ -71,5 +72,5 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/hello");
 }
-config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider'];
+// config.$inject =['$stateProvider', '$locationProvider','$urlRouterProvider'];
 export default config;

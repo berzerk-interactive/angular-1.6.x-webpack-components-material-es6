@@ -1,3 +1,4 @@
+/* @ngInject */
 class sidenavService {
     constructor($mdSidenav, $log) {
       this.toggle = function () {
@@ -11,5 +12,5 @@ class sidenavService {
 
   }
 }
-sidenavService.$inject = ['$mdSidenav', '$log']
+// sidenavService.$inject = ['$mdSidenav', '$log']
 export default sidenavService;

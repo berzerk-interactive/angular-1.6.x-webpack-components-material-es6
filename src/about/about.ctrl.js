@@ -1,3 +1,4 @@
+/* @ngInject */
 class aboutCtrl {
   constructor(sidenavService) {
     this.sidenavService = sidenavService;
@@ -9,5 +10,5 @@ class aboutCtrl {
     this.paragraph = 'This state lazy loads moment js on state change to it'
   }
 }
-aboutCtrl.$inject = ['sidenavService']
+// aboutCtrl.$inject = ['sidenavService']
 export default aboutCtrl;

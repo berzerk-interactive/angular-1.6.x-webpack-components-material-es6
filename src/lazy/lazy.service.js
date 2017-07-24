@@ -7,5 +7,5 @@ class lazyService {
   }
 }
 
-lazyService.$inject = ['$http']
+// lazyService.$inject = ['$http']
 export default lazyService

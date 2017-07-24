@@ -1,3 +1,4 @@
+/* @ngInject */
 class lazySidebarCtrl {
   constructor(sidenavService) {
     this.sidenavService = sidenavService;
@@ -6,5 +7,5 @@ class lazySidebarCtrl {
     this.sidenavService.toggle();
   }
 }
-lazySidebarCtrl.$inject= ['sidenavService'];
+// lazySidebarCtrl.$inject= ['sidenavService'];
 export default lazySidebarCtrl;

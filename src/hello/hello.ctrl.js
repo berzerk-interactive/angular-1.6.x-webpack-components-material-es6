@@ -1,3 +1,4 @@
+/* @ngInject */
 class helloCtrl {
   constructor(sidenavService) {
     this.sidenavService = sidenavService;
@@ -9,5 +10,5 @@ class helloCtrl {
 
   }
 }
-helloCtrl.$inject= ['sidenavService'];
+// helloCtrl.$inject= ['sidenavService'];
 export default helloCtrl;

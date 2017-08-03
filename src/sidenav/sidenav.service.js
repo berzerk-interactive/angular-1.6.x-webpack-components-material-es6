@@ -11,5 +11,5 @@ class sidenavService {
 
   }
 }
-sidenavService.$inject = ['$mdSidenav', '$log']
+sidenavService.$inject = ['$mdSidenav', '$log'];
 export default sidenavService;

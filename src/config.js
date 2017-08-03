@@ -6,17 +6,17 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
         side: 'helloSide',
         content: 'hello',
       }
-    }
+    };
   const appState = {
     name:'app',
     url: "/",
     redirectTo: 'hello'
-  }
+  };
   const oneState = {
       name: 'about',
       url: '/about',
       lazyLoad: function determineDate() {
-        import('moment').then(function(moment) {
+        return import('moment').then(function(moment) {
           console.log(moment().format());
         }).catch(function(err) {
           console.log('Failed to load moment', err);
@@ -26,7 +26,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
         side: 'helloSide',
         content: 'about',
       }
-    }
+    };
   const twoState = {
       name: 'two',
       url: '/two',
@@ -34,7 +34,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
         side: 'helloSide',
         content: 'two',
       }
-    }
+    };
   const lazyState = {
     name: 'lazy.**',
     url: '/lazy',
@@ -63,12 +63,12 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
     //      return deferred.promise;
     //   }]
     // }
-  }
+  };
   $stateProvider.state(helloState);
   $stateProvider.state(appState);
   $stateProvider.state(oneState);
   $stateProvider.state(twoState);
-  $stateProvider.state(lazyState)
+  $stateProvider.state(lazyState);
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise("/hello");
   $ocLazyLoadProvider.config({debug: true});

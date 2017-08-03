@@ -7,5 +7,5 @@ function lazyBarConfig ($stateProvider) {
     resolve: { serviceData: (lazyService) => lazyService.getServiceData() }
   });
 }
-lazyBarConfig.$inject = ['$stateProvider']
+lazyBarConfig.$inject = ['$stateProvider'];
 export default lazyBarConfig;

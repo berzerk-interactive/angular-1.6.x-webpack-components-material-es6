@@ -7,5 +7,5 @@ class LeftCtrl {
     this.sidenavService.toggle();
   }
 }
-LeftCtrl.$inject = [ 'sidenavService']
+LeftCtrl.$inject = [ 'sidenavService'];
 export default LeftCtrl;

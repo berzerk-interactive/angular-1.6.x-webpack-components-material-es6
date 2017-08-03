@@ -2,15 +2,15 @@ import appConfig from './config';
 
 class $stateProviderMock {
   constructor(){
-    this.states =[]
+    this.states =[];
   }
   state(state){
     console.log(state);
-    this.states.push(state)
+    this.states.push(state);
     //TODO: extend this mock
   }
   get(){
-    return this.states
+    return this.states;
   }
 }
 

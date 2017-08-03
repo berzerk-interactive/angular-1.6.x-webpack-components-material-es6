@@ -2,8 +2,10 @@
   "undef": true,
   "unused": true,
   "node": true,
+  "esnext": true,
+  "jasmine": true,
   "globals": {
-    "MY_GLOBAL": true,
-    "require": false
+    "require": false,
+    "angular": false
   }
 }

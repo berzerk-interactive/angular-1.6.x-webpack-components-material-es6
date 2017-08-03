@@ -1,5 +1,5 @@
 function lazyConfig($stateProvider) {
-  console.log('registering lazy, foo')
+  console.log('registering lazy, foo');
 
   $stateProvider.state('lazy', {
     url: '/lazy',
@@ -7,13 +7,13 @@ function lazyConfig($stateProvider) {
       side: 'lazySidebar',
       content: 'lazyComponent'
     }
-  })
+  });
 
   $stateProvider.state('lazy.foo', {
     url: '/foo',
     component: 'fooComponent',
     resolve: { fooData: () => 'Some foo resolve data' }
-  })
+  });
 }
-lazyConfig.$inject = ['$stateProvider']
+lazyConfig.$inject = ['$stateProvider'];
 export default lazyConfig;

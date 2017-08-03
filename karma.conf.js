@@ -42,7 +42,7 @@ module.exports = function karmaConfig (config) {
       reporters: [
         {type: 'text-summary'},
         {type: 'html'},
-        {type: 'lcov'}
+        { type: 'lcov', subdir: 'codacy' },
       ]
     },
 

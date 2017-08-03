@@ -10,7 +10,7 @@
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
+    "codacy": "cat ./coverage/codacy/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "repository": {
     "type": "git",

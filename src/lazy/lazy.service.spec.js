@@ -23,7 +23,7 @@ describe('lazy', () => {
       expect(service.getServiceData).toExist;
     });
     it('should call getServiceData', () => {
-      service.getServiceData()
+      service.getServiceData();
     });
 
   });

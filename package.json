@@ -9,7 +9,8 @@
     "start": "http-server dist",
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "test-watch": "karma start --auto-watch --no-single-run"
+    "test-watch": "karma start --auto-watch --no-single-run",
+    "codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "angular-material": "^1.1.3",
     "angular-resource": "^1.6.4",
     "angular-sanitize": "^1.6.4",
+    "codacy-coverage": "^2.0.2",
     "moment": "^2.18.1",
     "oclazyload": "^1.1.0"
   },

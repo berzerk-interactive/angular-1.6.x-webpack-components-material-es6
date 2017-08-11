@@ -16,7 +16,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
       name: 'about',
       url: '/about',
       lazyLoad: function determineDate() {
-        return import('moment').then(function(moment) {
+        return import(/* webpackChunkName: "moment" */ 'moment').then(function(moment) {
           console.log(moment().format());
         }).catch(function(err) {
           console.log('Failed to load moment', err);
@@ -41,7 +41,7 @@ function config ($stateProvider, $locationProvider,$urlRouterProvider, $ocLazyLo
     lazyLoad: (transition) => {
       console.log(transition);
       const $ocLazyLoad = transition.injector().get('$ocLazyLoad');
-      return import('./lazy/lazy.module.js').then(function (module) {
+      return import(/* webpackChunkName: "lazyModule" */ './lazy/lazy.module.js').then(function (module) {
         console.log(module);
         $ocLazyLoad.load({name: 'lazy'});
       }).catch(function(err) {

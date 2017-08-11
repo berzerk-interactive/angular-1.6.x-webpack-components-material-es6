@@ -1,3 +1,4 @@
+import fetchIntercept from './utils/fetch-interceptor';
 import helloCtrl from "./hello/hello.ctrl";
 import "style-loader!css-loader!sass-loader!../node_modules/angular-material/angular-material.scss";
 import config from './config';
@@ -9,6 +10,46 @@ angular.module('app', [
   'ngMaterial',
   'oc.lazyLoad'
 ])
+.run(()=>{
+  const unregister = fetchIntercept.register({
+    request: function (url, config) {
+        // Modify the url or config here
+        return [url, config];
+    },
+
+    requestError: function (error) {
+        // Called when an error occured during another 'request' interceptor call
+        return Promise.reject(error);
+    },
+
+    response: function (response) {
+        console.log('from interceptor', response);
+        console.log(typeof response);
+        switch (typeof response) {
+          case ('object' || 'array'):
+            response = response.json()
+            break;
+          default:
+
+        }
+        // Modify the reponse object
+        return response;
+    },
+
+    responseError: function (error) {
+        // Handle an fetch error
+        return Promise.reject(error);
+    }
+});
+
+// Call fetch to see your interceptors in action.
+fetch('http://google.com');
+fetch('../lazy/serviceData.json').then(resp=>resp.json()).then((data)=>{console.log(data);});
+fetch('../lazy/serviceData.json').then((data)=>{console.log(data);});
+
+// Unregister your interceptor
+// unregister();
+})
 .config(config)
 .service('sidenavService', sidenavService)
 .component('hello', {

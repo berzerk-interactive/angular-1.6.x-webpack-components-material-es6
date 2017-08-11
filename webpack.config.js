@@ -32,6 +32,7 @@ module.exports = function makeWebpackConfig() {
   config.entry = isTest ? void 0 : {
     app: './src/app.js',
     vendor: [
+      "babel-polyfill",
       "angular",
       "angular-aria",
       "angular-animate",

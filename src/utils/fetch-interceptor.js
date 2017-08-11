@@ -1,21 +1,4 @@
 //NOTE: inspired and modified form https://github.com/werk85/fetch-intercept
-// Uses Emscripten stategy for determining environment
-// const ENVIRONMENT_IS_REACT_NATIVE = typeof navigator === 'object' && navigator.product === 'ReactNative';
-// const ENVIRONMENT_IS_NODE = typeof process === 'object' && typeof require === 'function';
-// const ENVIRONMENT_IS_WEB = typeof window === 'object';
-// const ENVIRONMENT_IS_WORKER = typeof importScripts === 'function';
-//
-// if (ENVIRONMENT_IS_REACT_NATIVE) {
-//   attach(global);
-// } else if (ENVIRONMENT_IS_WORKER) {
-//   attach(self);
-// } else if (ENVIRONMENT_IS_WEB) {
-//   attach(window);
-// } else if (ENVIRONMENT_IS_NODE) {
-//   attach(global);
-// } else {
-//   throw new Error('Unsupported environment for fetch-intercept');
-// }
 
 function attach(env) {
   // Make sure fetch is available in the given environment

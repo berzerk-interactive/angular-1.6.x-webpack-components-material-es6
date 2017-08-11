@@ -6,7 +6,7 @@ export default ()=>{
         if (typeof config === 'undefined') {
           let config = {
             headers: {
-              customHeader: 'customHeader'
+              customHeader: 'CUSTOMHEADER'
             }
           };
           return [url, config];

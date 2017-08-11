@@ -6,6 +6,7 @@
   "jasmine": true,
   "globals": {
     "require": false,
-    "angular": false
+    "angular": false,
+    "fetch": false
   }
 }

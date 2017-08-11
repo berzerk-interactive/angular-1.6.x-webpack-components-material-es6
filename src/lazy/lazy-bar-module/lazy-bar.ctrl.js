@@ -4,4 +4,4 @@ class lazyBarCtrl {
   }
 }
 
-export default lazyBarCtrl
+export default lazyBarCtrl;

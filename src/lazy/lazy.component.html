@@ -4,9 +4,10 @@
   <p>Its files are loaded in a separate bundle from webpack on state change, including sass</p>
   <p>Foo and bar are displayed in a child ui-view</p>
   <ul>
-    <li><md-button ui-sref=".foo">Foo</md-button></li>
-    <li><md-button ui-sref=".bar">Bar</md-button></li>
+    <li><md-button class="md-raised" ui-sref=".foo">Foo</md-button></li>
+    <li><md-button class="md-raised" ui-sref=".bar">Bar</md-button></li>
     <li><md-button class="md-raised" ng-click="$ctrl.toggle()">toggle side nav</md-button>
+    <md-button class="md-raised" ng-click="$ctrl.failPost()">Make a fetch POST that will 404 (to demo interceptor)</md-button>
 </li>
   </ul>
   <hr>

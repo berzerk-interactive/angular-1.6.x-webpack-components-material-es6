@@ -1,15 +1,25 @@
 import fetchIntercept from './utils/fetch-interceptor';
+let headers = {
+  customHeader: 'CUSTOMHEADER'
+};
 export default ()=>{
   const unregister = fetchIntercept.register({
+
+
     request: function (url, config) {
         // Modify the url or config here
         if (typeof config === 'undefined') {
           let config = {
-            headers: {
-              customHeader: 'CUSTOMHEADER'
-            }
+            headers
           };
           return [url, config];
+        } else {
+          config.headers = headers;
+        }
+
+        if (typeof config.body === 'object') {
+          console.log(typeof config.body);
+          config.body = JSON.stringify(config.body);
         }
 
         return [url, config];

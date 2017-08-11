@@ -1,6 +1,6 @@
 
-import lazyCtrl from './lazy.ctrl.js';
-import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl.js';
+import lazyCtrl from './lazy.ctrl';
+import lazySidebarCtrl from './lazy-sidebar/lazy-sidebar.ctrl';
 import lazyService from './lazy.service';
 import lazyBarModule from './lazy-bar-module/lazy-bar.module';
 import lazyConfig from './lazy.config';

@@ -42,11 +42,6 @@ angular.module('app', [
     }
 });
 
-// Call fetch to see your interceptors in action.
-fetch('http://google.com');
-fetch('../lazy/serviceData.json').then(resp=>resp.json()).then((data)=>{console.log(data);});
-fetch('../lazy/serviceData.json').then((data)=>{console.log(data);});
-
 // Unregister your interceptor
 // unregister();
 })
